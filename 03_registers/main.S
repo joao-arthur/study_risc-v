@@ -13,5 +13,5 @@ _start:
     add  t3, zero, zero # t3 = 0 + 0
 
     li   a0, 0          # SUCCESS
-    li   a7, 93         # EXIT
+    li   a7, 93         # exit
     ecall

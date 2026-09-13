@@ -33,9 +33,9 @@ _start:
     li   a0, 1       # STDOUT
     mv   a1, sp      # *buf
     li   a2, 5       # count
-    li   a7, 64      # WRITE
+    li   a7, 64      # write
     ecall
 
     li   a0, 0       # SUCCESS
-    li   a7, 93      # EXIT 
+    li   a7, 93      # exit
     ecall

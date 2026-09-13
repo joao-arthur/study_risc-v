@@ -8,7 +8,7 @@ _start:
 
     li   t2, 1000    # t2 = 1000
     div  t3, t1, t2  # t3 = 6174 / 1000 = 6
-    addi t3, t3, '0' # t3 + 6 + 48 (ASCII 0) = 54 (ASCII '6')
+    addi t3, t3, '0' # t3 = 6 + 48 (ASCII 0) = 54 (ASCII '6')
     sb   t3, 0(t0)   # t0[0] = 54 (ASCII '6')
 
     rem  t1, t1, t2  # t1 = 6174 % 1000 = 174
@@ -20,11 +20,11 @@ _start:
     rem  t1, t1, t2  # t1 = 174 % 100 = 74
     li   t2, 10      # t2 = 10
     div  t3, t1, t2  # t3 = 74 / 10 = 7
-    addi t3, t3, '0' # 7 + 48 (ASCII 0) = 55 (ASCII '7')
-    sb   t3, 2(t0)   # t[2] = 55 (ASCII '7')
+    addi t3, t3, '0' # t3 = 7 + 48 (ASCII 0) = 55 (ASCII '7')
+    sb   t3, 2(t0)   # t0[2] = 55 (ASCII '7')
 
     rem  t1, t1, t2  # t1 = 74 % 10 = 4
-    addi t3, t1, '0' # 4 + 48 (ASCII 0) = 52 (ASCII '4')
+    addi t3, t1, '0' # t3 = 4 + 48 (ASCII 0) = 52 (ASCII '4')
     sb   t3, 3(t0)   # t0[3] = 52 (ASCII '4')
 
     li   t3, '\n'    # t3 = 10 (ASCII '\n')

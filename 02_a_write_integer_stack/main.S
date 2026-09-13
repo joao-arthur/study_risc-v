@@ -1,4 +1,5 @@
 .section .text
+
 .global _start
 
 _start:
@@ -19,11 +20,11 @@ _start:
     rem  t1, t1, t2  # t1 = 174 % 100 = 74
     li   t2, 10      # t2 = 10
     div  t3, t1, t2  # t3 = 74 / 10 = 7
-    addi t3, t3, '0' # 7 + 48 (ASCII 0) = 55 (ASCII '7')
-    sb   t3, 2(sp)   # t[2] = 55 (ASCII '7')
+    addi t3, t3, '0' # t3 = 7 + 48 (ASCII 0) = 55 (ASCII '7')
+    sb   t3, 2(sp)   # sp[2] = 55 (ASCII '7')
 
     rem  t1, t1, t2  # t1 = 74 % 10 = 4
-    addi t3, t1, '0' # 4 + 48 (ASCII 0) = 52 (ASCII '4')
+    addi t3, t1, '0' # t3 = 4 + 48 (ASCII 0) = 52 (ASCII '4')
     sb   t3, 3(sp)   # sp[3] = 52 (ASCII '4')
 
     li   t3, '\n'    # t3 = 10 (ASCII '\n')

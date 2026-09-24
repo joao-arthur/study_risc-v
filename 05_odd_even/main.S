@@ -12,7 +12,7 @@ _start:
     j print_odd
 
 after:
-    j   exit
+    j exit
 
 print_even:
     li a0, 1    # STDOUT
@@ -31,7 +31,7 @@ print_odd:
     ret
 
 exit:
-    li a0, 0  # SUCCESS
+    li a0, 0  # EXIT_SUCCESS
     li a7, 93 # exit 
     ecall
 

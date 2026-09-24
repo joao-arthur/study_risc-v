@@ -30,12 +30,12 @@ _start:
     li   t3, '\n'    # t3 = 10 (ASCII '\n')
     sb   t3, 4(sp)   # sp[4] = 10 (ASCII '\n')
 
-    li   a0, 1       # STDOUT
-    mv   a1, sp      # *buf
-    li   a2, 5       # count
-    li   a7, 64      # write
+    li a0, 1  # STDOUT
+    mv a1, sp # *buf
+    li a2, 5  # count
+    li a7, 64 # write
     ecall
 
-    li   a0, 0       # SUCCESS
-    li   a7, 93      # exit
+    li a0, 0  # EXIT_SUCCESS
+    li a7, 93 # exit
     ecall

@@ -20,17 +20,17 @@ _start:
     addi t1, x0, 3   # t1 = 0 + 3
     addi t2, x0, 5   # t2 = 0 + 5
 
-    mul  t3, t0, t1  # t3 = 2 x 3 = 6
-    mul  t4, t0, t2  # t4 = 2 x 5 = 10
-    mul  t5, t1, t2  # t5 = 3 x 5 = 15 
+    mul t3, t0, t1  # t3 = 2 x 3 = 6
+    mul t4, t0, t2  # t4 = 2 x 5 = 10
+    mul t5, t1, t2  # t5 = 3 x 5 = 15 
 
-    div  s1, t5, t1  # s1 = 15 / 3 = 5
-    div  s2, t5, t2  # s2 = 15 / 5 = 3
-    div  s3, t4, t0  # s3 = 10 / 2 = 5
-    div  s4, t4, t2  # s4 = 10 / 5 = 2
-    div  s5, t3, t0  # s5 = 6 / 2 = 3
-    div  s6, t3, t1  # s6 = 6 / 3 = 2
+    div s1, t5, t1  # s1 = 15 / 3 = 5
+    div s2, t5, t2  # s2 = 15 / 5 = 3
+    div s3, t4, t0  # s3 = 10 / 2 = 5
+    div s4, t4, t2  # s4 = 10 / 5 = 2
+    div s5, t3, t0  # s5 = 6 / 2 = 3
+    div s6, t3, t1  # s6 = 6 / 3 = 2
 
-    li a0, 0  # SUCCESS
+    li a0, 0  # EXIT_SUCCESS
     li a7, 93 # exit
     ecall

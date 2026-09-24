@@ -40,12 +40,12 @@ _start:
 
     mv   t4, a0      # t4 = a0
 
-    li   a0, 1       # STDOUT
-    mv   a1, t4      # *buf
-    li   a2, 5       # count
-    li   a7, 64      # write
+    li a0, 1  # STDOUT
+    mv a1, t4 # *buf
+    li a2, 5  # count
+    li a7, 64 # write
     ecall
 
-    li   a0, 0       # SUCCESS
-    li   a7, 93      # exit
+    li a0, 0  # EXIT_SUCCESS
+    li a7, 93 # exit
     ecall

@@ -2,28 +2,80 @@
 .global _start
 
 _start:
-    addi sp, sp, -20
+    addi sp, sp, -32
 
-    li   s1, 240        # 0xF0
-    li   s2, 65280      # 0xFF00
-    li   s3, 4294901760 # 0xFFFF0000
+    li t0, 0xF0
+    li t1, 0xFF00
+    li t2, 0xFFFF0000
+    li t3, 0xFFFFFFFF00000000
 
-    sw   s3, 0(sp)      # memory: 00 00 FF FF
-    sh   s2, 4(sp)      # memory: 00 FF
-    sb   s1, 6(sp)      # memory: F0
+    li t4, 0b11111111
+    li t5, 0b11110000
 
-    lbu  t0, 0(sp)      # 0x00
-    lbu  t1, 1(sp)      # 0x00
-    lbu  t2, 2(sp)      # 0xFF
-    lbu  t3, 3(sp)      # 0xFF
-    lbu  t4, 4(sp)      # 0x00
-    lbu  t5, 5(sp)      # 0xFF
-    lbu  t6, 6(sp)      # 0xF0
+    sd t3, 0(sp)  # stored as: 00 00 00 00 FF FF FF FF
+    sw t2, 8(sp)  # stored as: 00 00 FF FF
+    sh t1, 12(sp) # stored as: 00 FF
+    sb t0, 14(sp) # stored as: F0
 
-    lwu  s4, 0(sp)      # memory: 00 00 FF FF value: 0xFFFF0000
-    lhu  s5, 4(sp)      # memory: 00 FF       value: 0xFF00
-    lbu  s6, 6(sp)      # memory: F0          value: 0xF0
+    lbu s2, 0(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 1(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 2(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 3(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 4(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 5(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 6(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 7(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 8(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 9(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 10(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 11(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 12(sp)
+    bne s2, zero, exit_failure # 0x00
+    lbu s2, 13(sp)
+    bne s2, t4,   exit_failure # 0xFF
+    lbu s2, 14(sp)
+    bne s2, t5,   exit_failure # 0xF0
 
-    li a0, 0           # SUCCESS
-    li a7, 93          # exit
+    ld  t3, 0(sp)  # loaded as: 00 00 00 00 FF FF FF FF
+    lwu t2, 8(sp)  # loaded as: 00 00 FF FF
+    lhu t1, 12(sp) # loaded as: 00 FF
+    lbu t0, 14(sp) # loaded as: F0
+
+    li s3, 0xFFFFFFFF00000000
+    bne t3, s3, exit_failure
+    li s3, 0xFFFF0000
+    bne t2, s3, exit_failure
+    li s3, 0xFF00
+    bne t1, s3, exit_failure
+    li s3, 0xF0
+    bne t0, s3, exit_failure
+
+    j exit_success
+
+free_memory:
+    addi sp, sp, 32
+    ret
+
+exit_failure:
+    jal ra, free_memory
+    li a0, 1  # EXIT_exit_FAILURE
+    li a7, 93 # exit
+    ecall
+
+exit_success:
+    jal ra, free_memory
+    li a0, 0  # EXIT_SUCCESS
+    li a7, 93 # exit
     ecall

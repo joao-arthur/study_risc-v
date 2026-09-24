@@ -4,7 +4,7 @@
 
 _start:
     li   a0, 0       # *addr = 0 = no prefered address
-    li   a1, 20      # length
+    li   a1, 5       # length
     li   a2, 3       # prot = PROT_READ 0x01 | PROT_WRITE 0x02 = 0x03
     li   a3, 34      # MAP_PRIVATE 0x02 | MAP_ANONYMOUS 0x20 = 0x22
     li   a4, -1      # fd = -1 = no file descriptor

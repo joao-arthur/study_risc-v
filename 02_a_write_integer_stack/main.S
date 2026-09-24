@@ -3,7 +3,7 @@
 .global _start
 
 _start:
-    addi sp, sp, -20 # Where we will store ['6', '1', '7', '4', '\n']. Each address we access is 4 bytes
+    addi sp, sp, -5  # Where we will store ['6', '1', '7', '4', '\n']
     li   t1, 6174    # The number we want to print
 
     li   t2, 1000    # t2 = 1000

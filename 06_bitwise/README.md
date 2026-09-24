@@ -1,2 +1,2 @@
-# 04 - Bitwise
+# 06 - Bitwise operations
 

@@ -1,13 +1,22 @@
 # 09 - Branch
 
-- bgt
+- `beq` ==
+- `bne` !=
 
-- bge
+- `bgt` >
+- `bge` >=
+- `blt` <
+- `ble` <=
 
-- blt
+- `bgtu` Unsigned >
+- `bgeu` Unsigned >=
+- `bltu` Unsigned <
+- `bleu` Unsigned <=
 
-- ble
+- `beqz` == 0
+- `bnez` != 0
 
-- beq
-
-- bne
+- `bgtz` > 0
+- `bgez` >= 0
+- `bltz` < 0
+- `blez` <= 0

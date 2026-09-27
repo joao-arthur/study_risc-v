@@ -20,6 +20,8 @@ _start:
     addi t1, x0, 3   # t1 = 0 + 3
     addi t2, x0, 5   # t2 = 0 + 5
 
+    # M => mul, div, rem, remu
+
     mul t3, t0, t1  # t3 = 2 x 3 = 6
     mul t4, t0, t2  # t4 = 2 x 5 = 10
     mul t5, t1, t2  # t5 = 3 x 5 = 15 

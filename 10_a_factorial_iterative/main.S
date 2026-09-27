@@ -3,11 +3,11 @@
 
 _start:
     li a0, 7
-    mv s1, a0
+    mv t0, a0
 loop:
-    addi s1, s1, -1
-    beqz s1, after
-    mul a0, a0, s1
+    addi t0, t0, -1
+    beqz t0, after
+    mul a0, a0, t0
     j loop
 after:
     li a0, 0
